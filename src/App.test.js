@@ -6,41 +6,36 @@ import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
-test("Home page is displayed initially", () => {
-  render(
-    <MemoryRouter initialEntries={["/"]}>
+function renderApp(path = "/") {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
       <App />
     </MemoryRouter>
   );
+}
+
+test("Home page is displayed initially", () => {
+  renderApp("/");
 
   expect(
-    screen.getByRole("heading", { name: /home/i })
+    screen.getByRole("heading", { name: "Home" })
   ).toBeInTheDocument();
 });
 
 test("Home page displays a student image", () => {
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <App />
-    </MemoryRouter>
-  );
+  renderApp("/");
 
   expect(
-    screen.getByRole("img", { name: /student/i })
+    screen.getByRole("img", { name: /student profile/i })
   ).toBeInTheDocument();
 });
 
 test("About page opens using navigation", async () => {
   const user = userEvent.setup();
-
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <App />
-    </MemoryRouter>
-  );
+  renderApp("/");
 
   await user.click(
-    screen.getByRole("link", { name: /about/i })
+    screen.getByRole("link", { name: "About" })
   );
 
   expect(
@@ -53,17 +48,13 @@ test("About page opens using navigation", async () => {
 });
 
 test("Both navigation links are displayed", () => {
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <App />
-    </MemoryRouter>
-  );
+  renderApp("/");
 
   expect(
-    screen.getByRole("link", { name: /home/i })
+    screen.getByRole("link", { name: "Home" })
   ).toBeInTheDocument();
 
   expect(
-    screen.getByRole("link", { name: /about/i })
+    screen.getByRole("link", { name: "About" })
   ).toBeInTheDocument();
 });
