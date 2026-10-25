@@ -2,7 +2,9 @@ name: Deploy Program 19
 
 on:
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -33,19 +35,19 @@ jobs:
       - name: Run tests
         run: CI=true npm test -- --watchAll=false
 
-      - name: Build application
+      - name: Build React application
         run: npm run build
 
-      - name: Add fallback for GitHub Pages
+      - name: Add GitHub Pages fallback
         run: cp build/index.html build/404.html
 
-      - name: Configure Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: ./build
 
   deploy:
     needs: build
@@ -53,9 +55,4 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy website
-        id: deployment
-        uses: actions/deploy-pages@v4
+      url: ${{ steps.deployment.outputs
