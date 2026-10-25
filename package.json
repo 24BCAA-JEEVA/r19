@@ -2,7 +2,7 @@
   "name": "rjs-p19-student-profile",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://24bcaa-jeeva.github.io/rjs-p19/",
+  "homepage": "https://24bcaa-jeeva.github.io/r19/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
