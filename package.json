@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://24bcaa-jeeva.github.io/rjs-p19/",
   "dependencies": {
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -15,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": ["react-app"]
