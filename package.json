@@ -2,6 +2,7 @@
   "name": "rjs-p19-student-profile",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://24bcaa-jeeva.github.io/rjs-p19/",
   "dependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -20,7 +21,11 @@
     "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
