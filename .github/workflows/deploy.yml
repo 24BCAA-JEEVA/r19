@@ -32,16 +32,19 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
+      - name: Fix AJV dependency
+        run: npm install --no-save --legacy-peer-deps ajv@^8.17.1 ajv-keywords@^5.1.0
+
       - name: Run tests
         run: CI=true npm test -- --watchAll=false
 
-      - name: Build application
+      - name: Build React application
         run: npm run build
 
       - name: Add GitHub Pages fallback
         run: cp build/index.html build/404.html
 
-      - name: Configure Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
