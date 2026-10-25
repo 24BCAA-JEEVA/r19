@@ -1,12 +1,17 @@
+
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
+import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
 test("Home page is displayed initially", () => {
-  window.history.pushState({}, "", "/");
-  render(<App />);
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <App />
+    </MemoryRouter>
+  );
 
   expect(
     screen.getByRole("heading", { name: /home/i })
@@ -14,8 +19,11 @@ test("Home page is displayed initially", () => {
 });
 
 test("Home page displays a student image", () => {
-  window.history.pushState({}, "", "/");
-  render(<App />);
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <App />
+    </MemoryRouter>
+  );
 
   expect(
     screen.getByRole("img", { name: /student/i })
@@ -23,9 +31,13 @@ test("Home page displays a student image", () => {
 });
 
 test("About page opens using navigation", async () => {
-  window.history.pushState({}, "", "/");
   const user = userEvent.setup();
-  render(<App />);
+
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <App />
+    </MemoryRouter>
+  );
 
   await user.click(
     screen.getByRole("link", { name: /about/i })
@@ -41,8 +53,11 @@ test("About page opens using navigation", async () => {
 });
 
 test("Both navigation links are displayed", () => {
-  window.history.pushState({}, "", "/");
-  render(<App />);
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <App />
+    </MemoryRouter>
+  );
 
   expect(
     screen.getByRole("link", { name: /home/i })
