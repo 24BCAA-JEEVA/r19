@@ -35,16 +35,16 @@ jobs:
       - name: Run tests
         run: CI=true npm test -- --watchAll=false
 
-      - name: Build React application
+      - name: Build application
         run: npm run build
 
       - name: Add GitHub Pages fallback
         run: cp build/index.html build/404.html
 
-      - name: Configure GitHub Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload build artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
@@ -58,6 +58,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4
